@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Git & Node Assignment</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      margin: 0;
+      padding: 40px 20px;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      color: #00ffea;
+      text-shadow: 0 0 10px #00ffe0, 0 0 20px #00ffc3, 0 0 30px #00b8d4;
+      margin-bottom: 40px;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    h2 {
+      color: #fff;
+      border-left: 6px solid #ff00ff;
+      padding-left: 15px;
+      animation: slideInLeft 1s ease;
+    }
+
+    section {
+      background: rgba(255, 255, 255, 0.1);
+      border-left: 6px solid #ff00ff;
+      border-radius: 15px;
+      margin: 30px auto;
+      padding: 25px 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      width: 90%;
+      max-width: 800px;
+      transition: all 0.5s ease-in-out;
+      animation: fadeInRotate 1s ease both;
+    }
+
+    section:hover {
+      transform: rotateZ(0.5deg) scale(1.02);
+      background-color: rgba(255, 255, 255, 0.2);
+      border-color: #00ffe0;
+    }
+
+    code {
+      background-color: #222;
+      color: #ffea00;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+
+    pre {
+      background-color: #111;
+      color: #00ffea;
+      padding: 15px;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-size: 0.95em;
+      margin-top: 10px;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    ul {
+      padding-left: 20px;
+      line-height: 1.8;
+    }
+
+    /* Animations */
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #00ffc3, 0 0 20px #00d5c3, 0 0 30px #00bfa5;
+      }
+      to {
+        text-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ea, 0 0 40px #ff00c8;
+      }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInRotate {
+      from {
+        opacity: 0;
+        transform: rotateX(-10deg) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: rotateX(0) scale(1);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .marquee-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  height: 2.5rem;
+  margin-top: 50px;
+}
+
+.marquee-text {
+  position: absolute;
+  white-space: nowrap;
+  font-size: 1.8rem;
+  color: #00ffea;
+  text-shadow: 0 0 10px #00ffe0, 0 0 20px #00ffc3;
+  animation: marquee-scroll 10s linear infinite;
+}
+
+@keyframes marquee-scroll {
+  from {
+    right: -100%;
+  }
+  to {
+    right: 100%;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <h1 id="main-heading"></h1>
+
+  <section>
+    <h2>1. Difference Between <code>git diff</code> and <code>git status</code></h2>
+    <ul>
+      <li><strong>git diff:</strong> Shows actual line-by-line changes not yet staged.</li>
+      <li><strong>git status:</strong> Displays file-level changes and staging status, but not file contents.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>2. Difference Between <code>git push origin main</code> and <code>git push origin -u main</code></h2>
+    <ul>
+      <li><strong>git push origin main:</strong> Pushes local <code>main</code> branch to remote <code>origin</code>.</li>
+      <li><strong>git push origin -u main:</strong> Same as above, but sets upstream for future <code>git push</code> commands.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>3. What is a <code>.env</code> File?</h2>
+    <p>Used to store environment variables like API keys, ports, database connections, etc.</p>
+    <p><strong>Example:</strong></p>
+    <pre><code>PORT=3000
+DB_URL=mongodb://localhost:27017/mydb
+SECRET_KEY=superSecret123</code></pre>
+  </section>
+
+  <section>
+    <h2>4. What is <code>node_modules</code>?</h2>
+    <ul>
+      <li>Directory where npm stores installed packages.</li>
+      <li>Auto-generated using <code>npm install</code>.</li>
+      <li>Very large in size, usually ignored with <code>.gitignore</code>.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>5. What Does <code>README.md</code> Do?</h2>
+    <ul>
+      <li>Markdown file that explains what your project does.</li>
+      <li>Includes instructions, usage, installation, etc.</li>
+      <li>Displayed automatically on platforms like GitHub.</li>
+    </ul>
+    <p><strong>Example:</strong></p>
+    <pre><code># My Cool Project
+
+A simple Node.js app with environment configs.
+
+## Install
+npm install
+
+## Run
+npm start</code></pre>
+  </section>
+
+  <div class="marquee-container">
+    <div class="marquee-text">Thanks for viewing my assignment</div>
+  </div>
+  
+
+  <script>
+  // =======================
+  // Typing animation for <h1> (loops forever)
+  // =======================
+  const h1Text = "Assignment";
+  const h1 = document.getElementById("main-heading");
+  let h1Index = 0;
+
+  function typeH1() {
+    if (h1Index < h1Text.length) {
+      h1.innerHTML += h1Text.charAt(h1Index);
+      h1Index++;
+      setTimeout(typeH1, 150);
+    } else {
+      setTimeout(() => {
+        h1.innerHTML = "";
+        h1Index = 0;
+        typeH1();
+      }, 1500); // Pause before repeating
+    }
+  }
+
+  // =======================
+  // Typing animation for <h2> on section hover
+  // =======================
+  function typeH2(h2, text) {
+    h2.innerHTML = "";
+    let i = 0;
+    function type() {
+      if (i < text.length) {
+        h2.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(type, 100);
+      }
+    }
+    type();
+  }
+  window.onload = () => {
+    alert("Welcome to the Git & Node Assignment, hope you enjoy it!");
+    typeH1();
+    setupH2HoverTyping();
+  };
+</script>
+
+</body>
+</html>
